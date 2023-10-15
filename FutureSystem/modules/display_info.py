@@ -1,3 +1,6 @@
+# Import
+from future import *
+
 # Functions
 def notify(message, wrap = True, button = "a"):
 	screen.fill(info.colors.get("background"))

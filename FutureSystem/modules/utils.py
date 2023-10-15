@@ -1,3 +1,6 @@
+# Import
+from future import *
+
 # Functions
 def to_matrix(list, row_length):
 	return [list[i:i + row_length] for i in range(0, len(list), row_length)]
