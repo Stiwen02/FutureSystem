@@ -1,6 +1,3 @@
-# Import
-from future import *
-
 # Functions
 def input_pressed(input):
 	if pins[input.lower()].getDigital():

@@ -1,6 +1,3 @@
-# Import
-from future import *
-
 # Variables
 screen_width = 160
 screen_height = 128

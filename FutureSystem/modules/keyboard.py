@@ -1,6 +1,3 @@
-# Import
-from future import *
-
 # Variables
 character_array = [
 	"abcdefghijklmnopqrst",

@@ -1,6 +1,3 @@
-# Import
-from future import *
-
 # Functions
 def list(items, title, selected=0, space=-1, wrap=True, cancel=False, bottom_space=False):
 	if bottom_space and space == -1:
