@@ -1,4 +1,4 @@
-import traceback
+# import traceback
 
 try:
 	# Import functionality
@@ -83,6 +83,6 @@ except Exception as error:
 		return "\n".join(new_lines)
 
 	screen.text(wrap_text_d(repr(error)))
-	traceback.print_exc()
+	# traceback.print_exc()
 	while True:
 		pass
