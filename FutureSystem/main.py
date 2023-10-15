@@ -39,6 +39,7 @@ try:
 	import_module("display_info", True)
 	import_module("buttons", True)
 	import_module("user_input", True)
+	import_module("screen", True)
 	import_module("bitmap", True)
 	import_module("bluetooth", True)
 	import_module("buzzer", True)
