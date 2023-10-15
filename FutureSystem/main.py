@@ -1,4 +1,4 @@
-#import traceback
+import traceback
 
 try:
 	# Import functionality
@@ -50,14 +50,10 @@ try:
 	import_module("wifi", True)
 
 	# Main
-	screen.sync(0)
+	screen.sync = 0
 	
-	#name = keyboard("What's your name?")
-	#notify("Hello, " + name + ".")
-	screen.text("abcdefghijklmnopqrst\nuvwxyzABCDEFGHIJLMNO\nPQRSTUVWXYZ")
-	screen.refresh()
-	while True:
-		pass
+	name = keyboard("What's your name?")
+	notify("Hello, " + name + ".")
 except Exception as error:
 	from future import *
 	
@@ -87,4 +83,6 @@ except Exception as error:
 		return "\n".join(new_lines)
 
 	screen.text(wrap_text_d(repr(error)))
-	#traceback.print_exc()
+	traceback.print_exc()
+	while True:
+		pass

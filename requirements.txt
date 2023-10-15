@@ -1,0 +1,6 @@
+Programs:
+ - Python 3.x
+Python Modules:
+ - pygame (pip install pygame)
+Python Modules (Included in Python standard library):
+ - threading
