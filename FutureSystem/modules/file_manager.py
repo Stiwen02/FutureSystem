@@ -48,16 +48,15 @@ def delete_full_directory(path):
 	os.rmdir(path)
 
 def list_all(path = ".", return_tuple=False):
-	result = os.listdir(path)
-	return tuple(os.listdir(path)) if return_tuple else list(os.listdir(path))
+	return tuple(os.listdir()) if return_tuple else os.listdir()
 
 def list_files(path = ".", return_tuple=False):
-	result = list(file for file in os.listdir(path) if os.path.isfile(os.path.join(path, file)))
-	return tuple(result) if return_tuple else list(result)
+	result = tuple(file for file in os.listdir(path) if os.path.isfile(os.path.join(path, file)))
+	return result if return_tuple else list(result)
 
 def list_directories(path = ".", return_tuple=False):
-	result = directory for directory in os.listdir(path) if os.path.isdir(os.path.join(path, directory))
-	return tuple(result) if return_tuple else list(result)
+	result = tuple(directory for directory in os.listdir(path) if os.path.isdir(os.path.join(path, directory)))
+	return result if return_tuple else list(result)
 
 def is_file(path):
 	return os.path.isfile(path)

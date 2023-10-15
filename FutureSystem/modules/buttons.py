@@ -1,10 +1,9 @@
 # Import
 from future import *
-import modules.info as info
 
 # Functions
 def input_pressed(input):
-	if info.pins[input.lower()].getDigital():
+	if pins[input.lower()].getDigital():
 		return False
 	else:
 		return True
@@ -17,7 +16,7 @@ def until_input(input, pressed = False):
 
 def wait_input(wait_stop = True):
 	while True:
-		for pin in info.pins.keys():
+		for pin in pins.keys():
 			if input_pressed(pin):
 				if wait_stop:
 					until_input(pin, True)

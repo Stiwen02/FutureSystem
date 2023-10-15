@@ -1,6 +1,5 @@
 # Import
 from future import *
-import modules.list as list
 
 # Functions
 def ask(message, option_yes = "Yes", option_no = "No", selected = 1, wrap = True, cancel = False):
