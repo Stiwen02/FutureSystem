@@ -1,4 +1,5 @@
 # import traceback
+from future import *
 
 try:
 	# Import functionality
@@ -30,7 +31,6 @@ try:
 		return module_class
 
 	# Import
-	from future import *
 	import_module("keyboard", True)
 	import_module("file_manager", True)
 	import_module("list", True)
