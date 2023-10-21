@@ -44,7 +44,7 @@ def text_size(text, new_line_offset = -1):
 	return (text_width(text), text_height(text, new_line_offset))
 
 def text_width(text):
-	return max(len(line) for line in text.split("\n")) * character_width
+	return max(len(line) for line in text.split("\n")) * future_info.character_width
 
 def text_height(text, new_line_offset = -1):
 	new_line_offset = new_line_offset if new_line_offset != -1 else future_info.new_line_offset
