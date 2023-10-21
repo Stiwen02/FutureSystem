@@ -17,10 +17,10 @@ def until_input(input, pressed = False):
 		while not input_pressed(input): pass
 	while input_pressed(input): pass
 
-def wait_input(wait_stop = True):
+def wait_input(wait_until_released = True):
 	while True:
 		for pin in pins.keys():
 			if input_pressed(pin):
-				if wait_stop:
+				if wait_until_released:
 					until_input(pin, True)
 				return pin
