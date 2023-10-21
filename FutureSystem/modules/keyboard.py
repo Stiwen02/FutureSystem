@@ -1,5 +1,8 @@
 # Import
 from future import *
+import modules.future_info as future_info
+import modules.buttons as buttons
+import modules.utils as utils
 
 # Variables
 character_array = [
@@ -14,7 +17,7 @@ special_buttons = "_x<^"
 # Functions
 def keyboard(title, max_characters = -1, default_text = "", cancel_output = ""):
 	if max_characters == -1:
-		max_characters = max_horizontal_characters
+		max_characters = future_info.max_horizontal_characters
 
 	cursor_pos = [0, 0]
 	text = default_text
@@ -22,28 +25,27 @@ def keyboard(title, max_characters = -1, default_text = "", cancel_output = ""):
 	special_button_index = 0
 
 	while True:
-		screen.fill(colors.get("background"))
-		screen_text = "{}\n{}\n".format(wrap_text(title), pad_text(text))
-		screen_text_height = text_height(screen_text) + new_line_offset
+		screen.fill(future_info.colors.get("background"))
+		screen_text = "{}\n{}\n".format(utils.wrap_text(title), utils.pad_text(text))
+		screen_text_height = utils.text_height(screen_text) + future_info.new_line_offset
 
-		screen.text(screen_text, color=colors.get("foreground"))
+		screen.text(screen_text, color=future_info.colors.get("foreground"))
 
 		for y, row in enumerate(character_array):
 			for x, char in enumerate(row):
-				color = colors.get("selection") if not special_button_selected and cursor_pos == [x, y] else colors.get("foreground")
+				color = future_info.colors.get("selection") if not special_button_selected and cursor_pos == [x, y] else future_info.colors.get("foreground")
 				if special_button_selected and cursor_pos == [x, y]:
-					color = colors.get("previous")
-				screen.text(char, x * character_width, y * character_full_height + screen_text_height, color=color)
+					color = future_info.colors.get("previous")
+				screen.text(char, x * future_info.character_width, y * future_info.character_full_height + screen_text_height, color=color)
 
 		for i, button in enumerate(special_buttons):
-			color = colors.get("selection") if special_button_index == i else colors.get("foreground")
+			color = future_info.colors.get("selection") if special_button_index == i else future_info.colors.get("foreground")
 			if not special_button_selected and special_button_index == i:
-				color = colors.get("previous")
-			screen.text(button, i * character_width, text_bottom_position(button), color=color)
+				color = future_info.colors.get("previous")
+			screen.text(button, i * future_info.character_width, utils.text_bottom_position(button), color=color)
 
 		screen.refresh()
-
-		input = wait_input()
+		input = buttons.wait_input()
 
 		if input == "a":
 			if special_button_selected:

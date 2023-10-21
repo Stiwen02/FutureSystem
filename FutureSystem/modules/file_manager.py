@@ -16,8 +16,15 @@ def rename_file(source_path, dest_path):
 def move_file(source_path, dest_path):
 	os.rename(source_path, dest_path)
 
+def clone_file(source_path, dest_path):
+	write_file(dest_path, read_file(source_path))
+
 def file_exists(path):
-	return os.path.isfile(path)
+	try:
+		read_file(path)
+		return True
+	except:
+		return False
 
 def delete_file(path):
 	os.remove(path)
@@ -32,12 +39,28 @@ def move_directory(source_path, dest_path):
 	os.rename(source_path, dest_path)
 
 def directory_exists(path):
-	return os.path.isdir(path)
+	current_cwd = "/"
+	try:
+		current_cwd = os.getcwd()
+	except:
+		current_cwd = "/"
+	try:
+		os.chdir(path)
+		os.chdir(current_cwd)
+		return True
+	except:
+		try:
+			os.chdir(current_cwd)
+			return False
+		except:
+			return False
+	return False
 
 def delete_directory(path):
 	os.rmdir(path)
 
-def delete_full_directory(path):
+def delete_entire_directory(path):
+	# finish (os.walk doesn't exist, finish and use walk(path))
 	for root, dirs, files in os.walk(path, topdown=False):
 		for file in files:
 			file_path = os.path.join(root, file)
@@ -51,24 +74,42 @@ def list_all(path = ".", return_tuple=False):
 	return tuple(os.listdir()) if return_tuple else os.listdir()
 
 def list_files(path = ".", return_tuple=False):
-	result = tuple(file for file in os.listdir(path) if os.path.isfile(os.path.join(path, file)))
+	result = tuple(file for file in os.listdir(path) if is_file(join_paths(path, file)))
 	return result if return_tuple else list(result)
 
 def list_directories(path = ".", return_tuple=False):
-	result = tuple(directory for directory in os.listdir(path) if os.path.isdir(os.path.join(path, directory)))
+	result = tuple(directory for directory in os.listdir(path) if is_directory(join_paths(path, directory)))
 	return result if return_tuple else list(result)
 
+def walk(path):
+	# finish
+	return []
+
+def join_paths(path, *paths):
+	# finish (with support for relative paths)
+	return ""
+
 def is_file(path):
-	return os.path.isfile(path)
+	return file_exists(path) and not directory_exists(path)
 
 def is_directory(path):
-	return os.path.isdir(path)
+	return directory_exists(path) and not file_exists(path)
+
+def parent_directory(path):
+	return "/".join(path.replace("\\", "/").split("/")[:-1])
+
+def file_name(path):
+	return path.replace("\\", "/").split("/")[-1]
+
+def directory_name(path):
+	return path.replace("\\", "/").split("/")[-1]
 
 def cd(path):
 	os.chdir(path)
 
 def current_path():
-	os.getcwd()
+	return os.getcwd()
 
 def absolute_path(path):
-	os.path.abspath(path)
+	# finish (relative paths don't work)
+	return join_paths(current_path(), path)

@@ -1,12 +1,15 @@
 # Import
-from future import *
+from modules.pins import *
 
 # Functions
 def input_pressed(input):
-	if pins[input.lower()].getDigital():
+	try:
+		if pins[input.lower()].getDigital():
+			return False
+		else:
+			return True
+	except:
 		return False
-	else:
-		return True
 
 def until_input(input, pressed = False):
 	if not pressed:

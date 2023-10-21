@@ -1,0 +1,14 @@
+{
+	"name": "Screenshot",
+	"description": "Take a screenshot and save it to a file.",
+	"icon": "images/icon.png",
+	"version": [
+		"1.0.0",
+		1
+	],
+	"minimum_version": 1,
+	"authors": [
+		"@stiwen02"
+	],
+	"website": "https://github.com/Stiwen02/FutureSystem-Programs"
+}

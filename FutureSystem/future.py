@@ -38,10 +38,31 @@ class screen:
 		pygame.display.flip()
 
 class MeowPin:
-	pin = 0
+	pin = ""
 	type = ""
 	def __init__(self, pin, type):
 		self.pin = pin
 		self.type = type
 	def getDigital(self):
-		return True
+		keys = pygame.key.get_pressed()
+		if self.pin.lower == "p2":
+			if keys[pygame.K_UP]:
+				return 0
+			else:
+				return 1
+		if self.pin.lower == "p13":
+			if keys[pygame.K_DOWN]:
+				return 0
+			else:
+				return 1
+		if self.pin.lower == "p14":
+			if keys[pygame.K_LEFT]:
+				return 0
+			else:
+				return 1
+		if self.pin.lower == "p15":
+			if keys[pygame.K_RIGHT]:
+				return 0
+			else:
+				return 1
+		return 1

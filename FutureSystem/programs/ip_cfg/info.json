@@ -1,0 +1,14 @@
+{
+	"name": "CFG",
+	"description": "Copies CFG files to the SD card and back.",
+	"icon": "images/icon.png",
+	"version": [
+		"1.0.0",
+		1
+	],
+	"minimum_version": 1,
+	"authors": [
+		"@stiwen02"
+	],
+	"website": "https://github.com/Stiwen02/FutureSystem-Programs"
+}
