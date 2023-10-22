@@ -4,6 +4,7 @@ import time
 import modules.future_info as future_info
 import modules.buttons as buttons
 import modules.utils as utils
+import modules.user_input as user_input
 
 # Variables
 character_array = [
@@ -88,6 +89,10 @@ def keyboard(title, max_characters = -1, default_text = "", cancel_output = ""):
 		else:
 			letter = character_array[cursor_pos[1]][cursor_pos[0]]
 			description = letter
+			if letter.isupper():
+				description = "Uppercase " + description
+			elif letter.islower():
+				description = "Lowercase " + description
 			if description in special_characters.keys():
 				description = special_characters.get(description)
 			if len(description) > 1:
@@ -107,9 +112,13 @@ def keyboard(title, max_characters = -1, default_text = "", cancel_output = ""):
 				if special_button_index == 0:
 					if len(text) < max_characters:
 						text += " "
-				elif special_button_index == 1: return cancel_output
+				elif special_button_index == 1:
+					if user_input.ask(("Are you sure you want to cancel and proceed with\n" + cancel_output) if not cancel_output == "" else "Are you sure you want to cancel?"):
+						return cancel_output
 				elif special_button_index == 2: text = text[:-1]
-				elif special_button_index == 3: return text
+				elif special_button_index == 3:
+					if user_input.ask("Are you sure you are done with\n" + text):
+						return text
 			else:
 				if len(text) < max_characters:
 					text += character_array[cursor_pos[1]][cursor_pos[0]]
